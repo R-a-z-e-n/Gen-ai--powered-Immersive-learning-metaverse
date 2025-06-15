@@ -1,0 +1,5 @@
+This dataset contains **1200 rows** and **18 columns**.
+It initially had **0 missing values**, which were cleaned using **mean imputation** for numerical features.
+The analysis focused on **13 numerical columns**, revealing interesting distribution patterns.
+Strong correlations were detected and visualized.
+The dataset is now cleaned and preprocessed — ready for machine learning or further business analysis.

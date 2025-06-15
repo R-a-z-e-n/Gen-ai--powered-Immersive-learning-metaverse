@@ -1,0 +1,8 @@
+Total Rows: 1200, Columns: 18
+Missing values before cleaning: 0
+Missing columns handled: None
+Data types: {dtype('int64'): np.int64(7), dtype('float64'): np.int64(6), dtype('O'): np.int64(5)}
+Numerical features: ['Session_ID', 'Student_ID', 'HRV', 'Skin_Temperature', 'Expression_Joy', 'Expression_Confusion', 'Steps', 'Engagement_Level', 'Session_Duration', 'HRV_Frequency_Feature', 'Skin_Temperature_Frequency_Feature', 'Emotion_Label', 'Learning_Phase_Label']
+High correlation between Steps and Session_Duration: 0.09
+High correlation between Skin_Temperature_Frequency_Feature and Emotion_Label: 0.06
+High correlation between HRV and Engagement_Level: 0.05

@@ -1,0 +1,2 @@
+📉 Too many numerical columns — consider dimensionality reduction (e.g., PCA).
+🚀 No missing values found after cleaning — data is ready for modeling.
