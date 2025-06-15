@@ -1,0 +1,104 @@
+ Project3_ImmersiveLearningMetaverse.py
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import nltk
+from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import TruncatedSVD
+import cv2
+import torch
+from transformers import pipeline
+
+# 1. DATA SCIENCE + EDA + DATA ANALYTICS
+def load_learning_data():
+    data = {
+        'lesson': [
+            "Introduction to AI and Machine Learning",
+            "Deep Learning and Neural Networks",
+            "Natural Language Processing basics"
+        ],
+        'engagement_score': [80, 95, 70]
+    }
+    df = pd.DataFrame(data)
+    return df
+
+def plot_engagement(df):
+    sns.barplot(x='lesson', y='engagement_score', data=df)
+    plt.title("Lesson Engagement Scores")
+    plt.xticks(rotation=45)
+    plt.show()
+
+# 2. FEATURE ENGINEERING
+def extract_keywords(texts):
+    vectorizer = CountVectorizer(stop_words='english', max_features=10)
+    X = vectorizer.fit_transform(texts)
+    return vectorizer.get_feature_names_out(), X.toarray()
+
+# 3. MACHINE LEARNING
+def reduce_dimensions(features):
+    svd = TruncatedSVD(n_components=2, random_state=42)
+    reduced = svd.fit_transform(features)
+    return reduced
+
+# 4. NLP (Tokenization)
+def tokenize_lessons(texts):
+    nltk.download('punkt')
+    return [word_tokenize(text) for text in texts]
+
+# 5. CV (Simulated: AR marker detection)
+def detect_marker(image_path):
+    img = cv2.imread(image_path, 0)
+    if img is None:
+        return "Image not found"
+    # Simple threshold for demo
+    _, thresh = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)
+    return thresh
+
+# 6. DEEP LEARNING (Example transformer-based classifier placeholder)
+def build_transformer_model():
+    model = torch.nn.Transformer()
+    return model
+
+# 7. GENERATIVE AI (Generate quiz questions)
+def generate_quiz_question(prompt):
+    generator = pipeline("text-generation", model="gpt2")
+    return generator(prompt, max_length=40)[0]['generated_text']
+
+# 8. AI Automation (Recommend lessons)
+def recommend_lesson(engagement_scores):
+    max_idx = np.argmax(engagement_scores)
+    return f"Recommended lesson: {max_idx + 1}"
+
+# MAIN
+if __name__ == "__main__":
+    df = load_learning_data()
+    plot_engagement(df)
+
+    keywords, features = extract_keywords(df['lesson'])
+    print("Extracted Keywords:", keywords)
+
+    reduced_features = reduce_dimensions(features)
+    print("Reduced feature dimensions:\n", reduced_features)
+
+    tokenized = tokenize_lessons(df['lesson'])
+    print("Tokenized lessons:", tokenized)
+
+    thresh_img = detect_marker('ar_marker.jpg')
+    if isinstance(thresh_img, str):
+        print(thresh_img)
+    else:
+        cv2.imshow('Thresholded Marker', thresh_img)
+        cv2.waitKey(1000)
+        cv2.destroyAllWindows()
+
+    transformer_model = build_transformer_model()
+    print("Transformer model created:", transformer_model)
+
+    quiz_question = generate_quiz_question("Quiz question about AI:")
+    print("Generated quiz question:", quiz_question)
+
+    rec = recommend_lesson(df['engagement_score'])
+    print(rec)
