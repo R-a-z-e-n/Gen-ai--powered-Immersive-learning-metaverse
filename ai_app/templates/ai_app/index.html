@@ -1,0 +1,32 @@
+{% extends "ai_app/base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Immersive Learning Metaverse AI</h1>
+
+  <textarea id="prompt" placeholder="Enter lesson or quiz prompt"></textarea>
+
+  <button onclick="callApi('quiz', '#quizResult')">Generate Quiz</button>
+  <div id="quizResult"></div>
+
+  <button onclick="callApi('tokenize', '#tokenResult')">Tokenize</button>
+  <div id="tokenResult"></div>
+
+  <button onclick="callApi('keywords', '#keywordResult')">Keywords</button>
+  <div id="keywordResult"></div>
+
+  <button onclick="playAudio()">Text-to-Speech</button>
+  <audio id="ttsAudio" controls></audio>
+
+  <button onclick="callApi('similar', '#similarResult')">Recommend Lesson</button>
+  <div id="similarResult"></div>
+
+  <button onclick="showPlot()">Show Engagement Chart</button>
+  <img id="plotImg"/>
+
+  <div>
+    <input type="file" id="arInput" accept="image/*">
+    <button onclick="processAR()">Process AR Marker</button>
+    <img id="arImg"/>
+  </div>
+</div>
+{% endblock %}
