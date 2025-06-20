@@ -1,4 +1,4 @@
- Project3_ImmersiveLearningMetaverse.py
+
 
 import pandas as pd
 import numpy as np
@@ -12,7 +12,7 @@ import cv2
 import torch
 from transformers import pipeline
 
-# 1. DATA SCIENCE + EDA + DATA ANALYTICS
+#  DATA SCIENCE + EDA + DATA ANALYTICS
 def load_learning_data():
     data = {
         'lesson': [
